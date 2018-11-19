@@ -7,8 +7,9 @@
 >6. User will be able to filter the music based on timestamp/ popularity
 >7. User can add tags to his created music
 >8. User can search other music based on tags
->9. Admin has access to the whole database of users and music
->10. Admin can delete a user profile/music
+>9. User can search other user based on their names
+>10. Admin has access to the whole database of users and music
+>11. Admin can delete a user profile/music
 
 
 ![alt text](https://github.com/neu-mis-info6150-fall-2018/final-project-ignore/blob/master/BeatShare.svg)

@@ -7,8 +7,8 @@
 6. As an user I can able to filter the music based on timestamp/ popularity
 7. As an user I can add tags to his created music
 8. As an user I can search other music based on tags
-9. As an user I can search other users on the basis of their names
-10.As an admin I have the access to the whole database of users and music
+9. As an user I can search other users on the basis of their names<br>
+10.As an admin I have the access to the whole database of users and music<br>
 11.As an admin I can delete a user profile/music
 
 

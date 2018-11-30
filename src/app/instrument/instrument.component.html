@@ -1,0 +1,42 @@
+<ul id="dm-grid" ng-hide="loading">
+  <li class="dm-header">
+    <ul>
+      <li class='instrument-name'></li>
+      <li class='beat-num' *ngFor="let item of input; let i = index ">
+
+        <div ng-class="{true: 'current-beat'}[(i + 1) === machine.currentBeat()]">{{i + 1}}</div>
+      </li>
+    </ul>
+  </li>
+
+
+  <!-- <li class="dm-row" ng-repeat="row in machine.rows()">
+    <ul class="instrument">
+      <li class='instrument-name'>
+        {{row.getInstrument().getName()}}<br>
+        <span>{{row.getInstrument().getDescription()}}<span>
+      </li>
+      <li *ngFor="beat in row.getBeats()">
+        <button class="btn" ng-class="{'btn-on':beat.isActive()}"
+          ng-click="beat.toggle()">
+          <div></div>
+        </button>
+      </li>
+    </ul>
+  </li> -->
+</ul>
+<!-- <div>{{ _gridLength }}</div> -->
+
+<h1>Users</h1>
+<div>
+<ul>
+    <div *ngIf="instrument$">
+    <div >{{ instrument$.instruments[0] }}</div>
+  </div>
+  <!-- <li *ngFor="let i of instrument$">
+    <div>>{{ i.name }}</div>
+
+
+  </li> -->
+</ul>
+</div>

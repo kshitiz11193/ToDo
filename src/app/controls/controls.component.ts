@@ -27,7 +27,7 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
   _tempo = 120;
  //_timers = 0;
   
- _rows = [];
+ _rows:Array<any>;
  _queue = timer_q();
   //variables ends here
   constructor(private data: GeneralService,private rowData: BeatsService) {}
@@ -38,6 +38,8 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
     this.data.getSequence().subscribe(data => (this.sequence$ = data));
 
     this.data.currentData.subscribe(_currentBeat => this._currentBeat = _currentBeat)
+
+    this.data.dataRow.subscribe(_rows => this._rows = _rows);
     // this.loadInstruments();
     //this.range();
     
@@ -90,11 +92,15 @@ if(this.instrument$!=undefined)
        
          player = new Howl({ src: ['assets/audio/' + item] });
          //player.play();
-        instrument =  this.rowData.Instrument(player, item);
-        instrument.play();
+        instrument =  this.rowData.Instrument(player, this.instrument$.instruments[i]);
+        //instrument.play();
         this._rows.push( this.rowData.Row(instrument, this._gridLength));
         console.log("rows value"+this._rows);
+        
+        
       }
+      this.data.getRows(this._rows);
+      
      // this.loadSequence();
     }
    

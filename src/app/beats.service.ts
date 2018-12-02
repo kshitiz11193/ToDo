@@ -18,11 +18,13 @@ export class BeatsService {
       }
     
       function getDescription() {
+        //alert("hi i am now"+inst.description);
         return description;
       }
     
       function play() {
         try {
+          //alert("playing");
           audioPlayer.play();
           return true;
         } catch(e) {

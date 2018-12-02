@@ -9,8 +9,9 @@ import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 export class GeneralService {
   private shareData = new BehaviorSubject<number>(0) ;
   currentData = this.shareData.asObservable();
-
   
+  private shareRows = new BehaviorSubject<Array<any>>([]);
+  dataRow = this.shareRows.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -27,4 +28,10 @@ export class GeneralService {
     this.shareData.next(beat);
   }
 
+  getRows(row:Array<any>)
+  {
+    this.shareRows.next(row);
+    console.log("service   "+row);
+
+  }
 }

@@ -21,7 +21,7 @@ export class InstrumentComponent implements OnInit, AfterViewChecked, OnChanges 
 //   _gridLength = 16;
 //   _tempo = 120;
 //  // _timers = timerQueue;
-//   _rows = [];
+   _rows :Array<any>;
 //   //variables ends here
   beatIndex:number;
    constructor(private data: GeneralService) {}
@@ -31,18 +31,17 @@ export class InstrumentComponent implements OnInit, AfterViewChecked, OnChanges 
 
     // this.data.getSequence().subscribe(data => (this.sequence$ = data));
     // // this.loadInstruments();
-    this.data.currentData.subscribe(_currentBeat => this._currentBeat = _currentBeat)
+    this.data.currentData.subscribe(_currentBeat => this._currentBeat = _currentBeat);
+    //this.data.dataRow.subscribe(_rows => this._rows = _rows);
     this.range();
     console.log(this._currentBeat);
+    console.log("**I am rows*"+this._rows);
     this.beatIndex = this._currentBeat;
     
   }
 
   ngOnChanges(){
-    this.data.currentData.subscribe(_currentBeat => this._currentBeat = _currentBeat)
-    this.range();
-    console.log(this._currentBeat);
-    this.beatIndex = this._currentBeat;
+   
     
   }
   
@@ -56,7 +55,10 @@ export class InstrumentComponent implements OnInit, AfterViewChecked, OnChanges 
     //   this.jData = true;
 
     // }
+    this.data.dataRow.subscribe(_rows => this._rows = _rows);
+    //alert(this._rows)
     
+    console.log("**I am view checked rows*"+this._rows);
   }
 
    currentBeat() {

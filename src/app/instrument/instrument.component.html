@@ -5,10 +5,12 @@
       <li class='beat-num' *ngFor="let item of input; let i = index ">
         
         <!-- {{ grid }} -->
-        <div ng-class="{true: 'current-beat'}[(i + 1) === machine.currentBeat()]">{{i + 1}}</div>
+        <div [ngClass]="{true: 'current-beat'}[(i + 1) === currentBeat()]">{{i + 1}}</div>
+       
       </li>
     </ul>
   </li>
+  <div>{{_currentBeat}}</div>
   <!-- <li class="dm-row" ng-repeat="row in machine.rows()">
     <ul class="instrument">
       <li class='instrument-name'>

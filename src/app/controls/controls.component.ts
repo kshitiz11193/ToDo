@@ -3,8 +3,9 @@ import { GeneralService } from "../general.service";
 import { Observable } from "rxjs";
 import { Howl } from 'howler';
 import { RangePipe } from "../pipes/range.pipe";
-import { Instrument} from "../instrument";
-import {Row} from "../row";
+//import { Instrument} from "../instrument";
+//import {Row} from "../row";
+import {BeatsService} from "../beats.service"
 import { timer_q} from "../timer_queue"
 
 @Component({
@@ -20,7 +21,7 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
   //drum inititalization variables
   input =[];
   _playing = false;
-  _currentBeat = 0;
+  _currentBeat:number;
   _delay = 100;
   _gridLength = 16;
   _tempo = 120;
@@ -29,12 +30,14 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
  _rows = [];
  _queue = timer_q();
   //variables ends here
-  constructor(private data: GeneralService) {}
+  constructor(private data: GeneralService,private rowData: BeatsService) {}
 
   ngOnInit() {
     this.data.getInstrument().subscribe(data => (this.instrument$ = data));
 
     this.data.getSequence().subscribe(data => (this.sequence$ = data));
+
+    this.data.currentData.subscribe(_currentBeat => this._currentBeat = _currentBeat)
     // this.loadInstruments();
     //this.range();
     
@@ -87,9 +90,9 @@ if(this.instrument$!=undefined)
        
          player = new Howl({ src: ['assets/audio/' + item] });
          //player.play();
-        instrument =  Instrument(player, item);
+        instrument =  this.rowData.Instrument(player, item);
         instrument.play();
-        this._rows.push( Row(instrument, this._gridLength));
+        this._rows.push( this.rowData.Row(instrument, this._gridLength));
         console.log("rows value"+this._rows);
       }
      // this.loadSequence();
@@ -135,8 +138,9 @@ if(this.sequence$!=undefined)
   // }
 
   //  currentBeat() {
-  //   return this._currentBeat;
-  // }
+  //    //return ;
+     
+  //  }
 
    setTempo(newTempo) {
     console.log("inside tempo" + newTempo);
@@ -150,6 +154,7 @@ if(this.sequence$!=undefined)
     // debugger
     this._playing = true;
     this._queue.add(this.playBeat(), this.beatDelay());
+    this.data.currentBeat(this._currentBeat);
   }
 
    stop() {

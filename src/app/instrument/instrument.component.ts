@@ -16,26 +16,33 @@ export class InstrumentComponent implements OnInit, AfterViewChecked, OnChanges 
 //   //drum inititalization variables
    input =[];
 //   _playing = false;
-//   _currentBeat = 0;
+   _currentBeat:number;
 //   _delay = 100;
 //   _gridLength = 16;
 //   _tempo = 120;
 //  // _timers = timerQueue;
 //   _rows = [];
 //   //variables ends here
-//   constructor(private data: GeneralService) {}
+  beatIndex:number;
+   constructor(private data: GeneralService) {}
 
   ngOnInit() {
     // this.data.getInstrument().subscribe(data => (this.instrument$ = data));
 
     // this.data.getSequence().subscribe(data => (this.sequence$ = data));
     // // this.loadInstruments();
+    this.data.currentData.subscribe(_currentBeat => this._currentBeat = _currentBeat)
     this.range();
+    console.log(this._currentBeat);
+    this.beatIndex = this._currentBeat;
     
   }
 
   ngOnChanges(){
-
+    this.data.currentData.subscribe(_currentBeat => this._currentBeat = _currentBeat)
+    this.range();
+    console.log(this._currentBeat);
+    this.beatIndex = this._currentBeat;
     
   }
   
@@ -51,6 +58,11 @@ export class InstrumentComponent implements OnInit, AfterViewChecked, OnChanges 
     // }
     
   }
+
+   currentBeat() {
+    return this._currentBeat;
+  }
+
 
   range()
   {

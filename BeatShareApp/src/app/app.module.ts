@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ControlsComponent } from './controls/controls.component';
 import { InstrumentComponent } from './instrument/instrument.component';
 import { RangePipe } from './pipes/range.pipe';
+import { MusicShareComponent } from './music-share/music-share.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { RangePipe } from './pipes/range.pipe';
     UserhomeComponent,
     ControlsComponent,
     InstrumentComponent,
-    RangePipe
+    RangePipe,
+    MusicShareComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -1,33 +1,19 @@
 <ul id="dm-grid" ng-hide="loading">
-  <li class="dm-header">
-    <ul>
-      <li class='instrument-name'></li>
-      <li class='beat-num' *ngFor="let item of input; let i = index ">
-        
-        <!-- {{ grid }} -->
-        <div [ngClass]="{true: 'current-beat'}[(i + 1) === currentBeat()]">{{i + 1}}</div>
-       
-      </li>
-    </ul>
-  </li>
-  <div>{{_currentBeat}}</div>
-  
 
-   <li class="dm-row" *ngFor="let row of _rows">
-    <ul class="instrument">
-      <li class='instrument-name'>
-        {{row.getInstrument().getName()}}<br>
-        <span>{{row.getInstrument().getDescription()}} </span>
-      </li>
-      <li *ngFor="let beat of row.getBeats()">
-        <button class="btn"  [ngClass]="{'btn-on':beat.isActive()}"
-          (click)="beat.toggle()">
-          <div></div>
-        </button>
-      </li>
-    </ul>
-  </li>
+  <li class="dm-row" *ngFor="let row of _rows">
+   <ul class="instrument">
+     <li class='instrument-name'>
+       {{row.getInstrument().getName()}}<br>
+       <span>{{row.getInstrument().getDescription()}} </span>
+     </li>
+     <li *ngFor="let beat of row.getBeats()">
+       <button class="btn"  [ngClass]="{'btn-on':beat.isActive()}"
+         (click)="beat.toggle()">
+         <div></div>
+       </button>
+     </li>
+   </ul>
+ </li>
 
 </ul>
 <!-- <div>{{ _gridLength }}</div> -->
-

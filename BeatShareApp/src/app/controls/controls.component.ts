@@ -26,7 +26,7 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
   _gridLength = 16;
   _tempo = 120;
  //_timers = 0;
-  
+
  _rows:Array<any>;
  _queue = timer_q();
   //variables ends here
@@ -41,31 +41,39 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
 
     this.data.dataRow.subscribe(_rows => this._rows = _rows);
     // this.loadInstruments();
-    //this.range();
-    
-    
+    this.range();
+
+
   }
 
   ngOnChanges(){
 
-    
+
   }
-  
+
   ngAfterViewChecked() {
     //console.log(this.instrument$);
     //console.log(this.sequence$);
     //if(this.instrument$.length != 0)
     if (this.instrument$ !==undefined && this.sequence$ !==undefined && this.jData === false) {
       this.loadInstruments();
-      
+
       this.loadSequence();
       //this.play();
       this.jData = true;
 
     }
-    
+
   }
 
+  range()
+  {
+    console.log(typeof(this.input));
+    for (let i=1; i<=16; i++)
+    {
+        this.input.push(i);
+    }
+  }
   // range()
   // {
   //   console.log(typeof(this.input));
@@ -78,10 +86,10 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
    loadInstruments() {
     let item, player, instrument;
 
-   
-    
+
+
 //new Howl({src: ['sound.webm', 'sound.mp3']});
-    
+
 if(this.instrument$!=undefined)
 {
   //console.log("LI"+this.instrument$.instruments);
@@ -89,32 +97,32 @@ if(this.instrument$!=undefined)
         item = this.instrument$.instruments[i].file;
         console.log("item:  "+item);
         console.log('$$$inside instrument load');
-       
+
          player = new Howl({ src: ['assets/audio/' + item] });
          //player.play();
         instrument =  this.rowData.Instrument(player, this.instrument$.instruments[i]);
         //instrument.play();
         this._rows.push( this.rowData.Row(instrument, this._gridLength));
         console.log("rows value"+this._rows);
-        
-        
+
+
       }
       this.data.getRows(this._rows);
-      
+
      // this.loadSequence();
     }
-   
+
   }
 
    loadSequence() {
-   
+
 if(this.sequence$!=undefined)
 {
    this.reset();
 
       console.log("inside load sequence"+this.sequence$);
       this._gridLength = this.sequence$.gridLength;
-      
+
       this.setTempo(this.sequence$.tempo);
 
       for(var i = 0; i < 4; i++) {
@@ -122,7 +130,7 @@ if(this.sequence$!=undefined)
           if (this.sequence$.rows[i][j] === "1") {
             this._rows[i].getBeats()[j].activate();
             console.log("row value inside load"+ this._rows[i].getBeats()[j]);
-            
+
           } else {
             this._rows[i].getBeats()[j].deactivate();
           }
@@ -145,7 +153,7 @@ if(this.sequence$!=undefined)
 
   //  currentBeat() {
   //    //return ;
-     
+
   //  }
 
    setTempo(newTempo) {
@@ -176,7 +184,7 @@ if(this.sequence$!=undefined)
     this.resetAllRows();
   }
 
-  
+
   // Benchmark Code
   //var lastTime = new Date().getTime();
    playBeat = () => {
@@ -189,7 +197,7 @@ if(this.sequence$!=undefined)
       // let playBeat = this.playBeat;
 
       return function() {
-       
+
        //alert(xyz._rows);
        //debugger
       //var thisTime = new Date().getTime();
@@ -199,7 +207,7 @@ if(this.sequence$!=undefined)
         xyz._currentBeat = 0;
         console.log("current beat set to zero");
       }
-      
+
       for (var i = 0; i < xyz._rows.length; i++) {
         xyz._rows[i].playSound(xyz._currentBeat);
       }
@@ -219,7 +227,7 @@ if(this.sequence$!=undefined)
     return (1000 / (this._tempo * 2) * 60);
   }
 
-   
+
 
 //    queue() {
 //     return this._queue;
@@ -233,7 +241,7 @@ if(this.sequence$!=undefined)
 //      debugger;
 //     this._queue.push(setTimeout(fn, delay));
 //   }
-  
+
 //    clear() {
 //     for (var i = 0; i < this._queue.length; i++) {
 //       clearTimeout(this._queue[i]);

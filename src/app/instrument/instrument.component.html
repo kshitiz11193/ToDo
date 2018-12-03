@@ -1,17 +1,4 @@
 <ul id="dm-grid" ng-hide="loading">
-  <li class="dm-header">
-    <ul>
-      <li class='instrument-name'></li>
-      <li class='beat-num' *ngFor="let item of input; let i = index ">
-        
-        <!-- {{ grid }} -->
-        <div [ngClass]="{true: 'current-beat'}[(i + 1) === currentBeat()]">{{i + 1}}</div>
-       
-      </li>
-    </ul>
-  </li>
-  <div>{{_currentBeat}}</div>
-  
 
    <li class="dm-row" *ngFor="let row of _rows">
     <ul class="instrument">

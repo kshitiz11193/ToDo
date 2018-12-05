@@ -33,6 +33,13 @@ export class UserService {
       headers:new HttpHeaders().append('Content-Type','application/json')
     })
   }
+  addToPlayList(body:any)
+  {
+    return this._http.post('http://127.0.0.1:3000/users/addToPlayList',body,{
+      observe:'body',
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    });
+  }
   logout(){
     return this._http.get('http://127.0.0.1:3000/users/logout',{
       observe:'body',

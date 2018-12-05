@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
+
 @Component({
   selector: 'app-userhome',
   templateUrl: './userhome.component.html',
@@ -20,6 +21,10 @@ export class UserhomeComponent implements OnInit {
     this.username = data.username;
   }
   ngOnInit() {
+  }
+  addToPlayList()
+  {
+
   }
   logout() {
     this._user.logout()

@@ -10,6 +10,9 @@ router.get('/', function(req, res, next) {
 router.post('/register', function (req, res, next) {
   addToDB(req, res);
 });
+router.post('/addToPlayList', function (req, res, next) {
+  addToDB(req, res);
+});
 
 
 async function addToDB(req, res) {
@@ -18,7 +21,8 @@ async function addToDB(req, res) {
     email: req.body.email,
     username: req.body.username,
     password: User.hashPassword(req.body.password),
-    creation_dt: Date.now()
+    creation_dt: Date.now(),
+   queue: req.body.queue
   });
  
 //await function to give the feel it is a synchronous call where as internally it is an asynchronous call.
@@ -46,8 +50,9 @@ router.get('/user',isValidUser,function(req,res,next){
   return res.status(200).json(req.user);
 });
 
+///'logout'  is a custom name, isValidUser is passed becuase logout page should only be available to users who are logged in
 router.get('/logout',isValidUser, function(req,res,next){
-  req.logout();
+  req.logout();//function provided by passport.js
   return res.status(200).json({message:'Logout Success'});
 })
 

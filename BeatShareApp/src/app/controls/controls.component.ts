@@ -7,7 +7,7 @@ import { RangePipe } from "../pipes/range.pipe";
 //import {Row} from "../row";
 import {BeatsService} from "../beats.service"
 import { timer_q} from "../timer_queue"
-
+import {UserService} from "../user.service";
 @Component({
   selector: 'app-controls',
   templateUrl: './controls.component.html',
@@ -30,7 +30,7 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
  _rows:Array<any>;
  _queue = timer_q();
   //variables ends here
-  constructor(private data: GeneralService,private rowData: BeatsService) {}
+  constructor(private data: GeneralService,private rowData: BeatsService,private userService:UserService) {}
 
   ngOnInit() {
     this.data.getInstrument().subscribe(data => (this.instrument$ = data));
@@ -43,6 +43,15 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
     // this.loadInstruments();
     this.range();
 
+
+  }
+  addToPlayList()
+  {
+  this.userService.addToPlayList(JSON.stringify(this._queue)).subscribe
+  (
+    
+    
+  )
 
   }
 

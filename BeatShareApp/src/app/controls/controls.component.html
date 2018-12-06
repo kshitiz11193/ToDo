@@ -4,11 +4,13 @@
   <button id="reset" class="button small radius" (click)="reset()">Clear</button>
   <div id="readout">
     <span id="tempo">
-      <input [(ngModel)]="tempo" type="range" min="60" max="180" (ngModelChange)="setTempo(tempo)">
-      <input id="bpmEdit" type="text" min="60" max="180" (ngModelChange)="setTempo(tempo)" (blur)="CloseEdit()" [(ngModel)]="tempo" style="width:50px;display:none;">
-      <span id="bpm" ng-click="EditBPM()">{{tempo}} bpm</span>
+      <input [(ngModel)]="_tempo" type="range" min="60" max="180" (ngModelChange)="setTempo(_tempo)">
+      <input id="bpmEdit" type="text" min="60" max="180" (ngModelChange)="setTempo(_tempo)" (blur)="CloseEdit()" [(ngModel)]="_tempo" style="width:50px;display:none;">
+      <span id="bpm" ng-click="EditBPM()">{{_tempo}} bpm</span>
     </span>
   </div>
+  <button id="save" class="button small success radius" (click)="addToPlayList()">Save</button>
+
 </div>
 
 <ul id="dm-grid" ng-hide="loading">

@@ -1,3 +1,4 @@
+import { UserService} from './../user.service';
 import { Component, OnInit, AfterViewChecked, OnChanges } from "@angular/core";
 import { GeneralService } from "../general.service";
 import { Observable } from "rxjs";
@@ -30,7 +31,7 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
  _rows:Array<any>;
  _queue = timer_q();
   //variables ends here
-  constructor(private data: GeneralService,private rowData: BeatsService) {}
+  constructor(private data: GeneralService,private rowData: BeatsService, private userService: UserService) {}
 
   ngOnInit() {
     this.data.getInstrument().subscribe(data => (this.instrument$ = data));
@@ -226,6 +227,18 @@ if(this.sequence$!=undefined)
    beatDelay() {
     return (1000 / (this._tempo * 2) * 60);
   }
+
+  addToPlayList()
+ {
+   console.log("row inside playlist" +this._rows);
+   debugger
+ this.userService.addToPlayList(this._rows).subscribe
+ (
+  data=>{console.log(data);},
+  error=>console.error(error)
+ )
+ }
+
 
 
 

@@ -18,9 +18,10 @@ async function addToDB(req, res) {
     email: req.body.email,
     username: req.body.username,
     password: User.hashPassword(req.body.password),
-    creation_dt: Date.now()
+    creation_dt: Date.now(),
+    row: req.body.row
   });
- 
+
 //await function to give the feel it is a synchronous call where as internally it is an asynchronous call.
   try {
     doc = await user.save();  //saves the user to mongoDB
@@ -41,6 +42,11 @@ router.post('/login',function(req,res,next){
     });
   })(req, res, next);
 });
+
+router.post('/addToPlyList', function (req, res, next) {
+  console.log("AT route add ti play list")
+  addToDB(req, res);
+ });
 
 router.get('/user',isValidUser,function(req,res,next){
   return res.status(200).json(req.user);

@@ -6,12 +6,27 @@ import { UserhomeComponent } from './userhome/userhome.component';
 import {ControlsComponent}from './controls/controls.component';
 import {InstrumentComponent} from './instrument/instrument.component';
 import { MusicShareComponent } from './music-share/music-share.component';
+import { UsersComponent } from './users/users.component';
+import { DetailsComponent } from './details/details.component';
+import { PostsComponent } from './posts/posts.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'login',pathMatch:'full'},
 {path:'login',component:LoginComponent},
 {path:'register',component:RegisterComponent},
 {path:'user',component:UserhomeComponent},
+{
+  path: 'NewsFeed',
+  component: UsersComponent
+},
+{
+  path: 'details/:id',
+  component: DetailsComponent
+},
+{
+  path: 'NewsFeed/posts',
+  component: PostsComponent
+},
 //{ path:'playBeat', component:MusicShareComponent }
 
 

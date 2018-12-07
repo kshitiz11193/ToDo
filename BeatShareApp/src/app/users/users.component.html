@@ -1,0 +1,36 @@
+<!-- 
+
+<ul>
+  <li *ngFor="let user of users$">
+     <img src= {{user.avatar}} height="42" width="42">
+  
+    <span>
+    <ul>
+        <li id = "title"> {{ user.name }} </li>
+      <li><span> {{ user.position }} </span>at <span> {{ user.company }} </span></li> 
+      <li id="skill">{{ user.skill }}</li>
+
+      
+    </ul>
+
+  </span>
+
+  
+  </li>
+</ul> -->
+
+<h1>Users</h1>
+<div id="container">
+  <app-sidebar></app-sidebar>
+
+  <div id="content">
+<ul>
+  <li *ngFor="let user of users$">
+    <a routerLink="/details/{{user.id}}">{{ user.name }}</a>
+
+    <ul>
+      <li>{{ user.email }}</li>
+      <li><a href="http://{{ user.website }}">{{ user.website }}</a></li>
+    </ul>
+  </li>
+</ul>

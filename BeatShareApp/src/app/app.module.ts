@@ -13,6 +13,12 @@ import { ControlsComponent } from './controls/controls.component';
 import { InstrumentComponent } from './instrument/instrument.component';
 import { RangePipe } from './pipes/range.pipe';
 import { MusicShareComponent } from './music-share/music-share.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { UsersComponent } from './users/users.component';
+//import { MatRadioModule } from '@angular/material/radio';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PostsComponent } from './posts/posts.component';
+import { DetailsComponent } from './details/details.component';
 
 
 @NgModule({
@@ -25,6 +31,10 @@ import { MusicShareComponent } from './music-share/music-share.component';
     InstrumentComponent,
     RangePipe,
     MusicShareComponent,
+    SidebarComponent,
+    UsersComponent,
+    PostsComponent,
+    DetailsComponent
     
   ],
   imports: [
@@ -32,7 +42,9 @@ import { MusicShareComponent } from './music-share/music-share.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+   // MatRadioModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

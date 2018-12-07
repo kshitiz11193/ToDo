@@ -40,4 +40,12 @@ export class UserService {
       headers:new HttpHeaders().append('Content-Type','application/json')
     })
   }
+  getNewsFeed()
+  {
+    return this._http.get('http://127.0.0.1:3000/users/getNewsFeed',{
+      observe:'body',
+      withCredentials:true,
+      headers:new HttpHeaders().append('Content-Type','application/json')
+    })
+  }
 }

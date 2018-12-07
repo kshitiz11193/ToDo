@@ -9,7 +9,7 @@ import { MusicShareComponent } from './music-share/music-share.component';
 import { UsersComponent } from './users/users.component';
 import { DetailsComponent } from './details/details.component';
 import { PostsComponent } from './posts/posts.component';
-
+import  { BeatShareUsersComponent } from './beat-share-users/beat-share-users.component';
 const routes: Routes = [
   {path:'', redirectTo:'login',pathMatch:'full'},
 {path:'login',component:LoginComponent},
@@ -17,7 +17,7 @@ const routes: Routes = [
 {path:'user',component:UserhomeComponent},
 {
   path: 'NewsFeed',
-  component: UsersComponent
+  component: BeatShareUsersComponent
 },
 {
   path: 'details/:id',

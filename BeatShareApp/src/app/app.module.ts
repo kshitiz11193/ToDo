@@ -19,6 +19,7 @@ import { UsersComponent } from './users/users.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PostsComponent } from './posts/posts.component';
 import { DetailsComponent } from './details/details.component';
+import { BeatShareUsersComponent } from './beat-share-users/beat-share-users.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { DetailsComponent } from './details/details.component';
     SidebarComponent,
     UsersComponent,
     PostsComponent,
-    DetailsComponent
+    DetailsComponent,
+    BeatShareUsersComponent
     
   ],
   imports: [

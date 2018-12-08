@@ -16,7 +16,7 @@ router.get('/', (req,res)=>{
     else { console.log('Error in Retriving Users :' + JSON.stringify(err, undefined, 2)); }
   });
 })
-/*router.get('/:id', (req, res) => {
+router.get('/users:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
       return res.status(400).send(`No record with given id : ${req.params.id}`);
 
@@ -24,8 +24,8 @@ router.get('/', (req,res)=>{
       if (!err) { res.send(doc); }
       else { console.log('Error in Retriving Employee :' + JSON.stringify(err, undefined, 2)); }
   });
-});*/
-/*router.put('/:id', (req, res) => {
+});
+router.put('/users:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
       return res.status(400).send(`No record with given id : ${req.params.id}`);
 
@@ -39,7 +39,7 @@ router.get('/', (req,res)=>{
       else { console.log('Error in User Update :' + JSON.stringify(err, undefined, 2)); }
   });
 });
-router.delete('/:id', (req, res) => {
+router.delete('/users:id', (req, res) => {
   if (!ObjectId.isValid(req.params.id))
       return res.status(400).send(`No record with given id : ${req.params.id}`);
 
@@ -47,7 +47,7 @@ router.delete('/:id', (req, res) => {
       if (!err) { res.send(doc); }
       else { console.log('Error in User Deletion :' + JSON.stringify(err, undefined, 2)); }
   });
-});*/
+});
 
 async function addToDB(req, res) {
 

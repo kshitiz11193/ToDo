@@ -15,9 +15,10 @@ const routes: Routes = [
 {path:'login',component:LoginComponent},
 {path:'register',component:RegisterComponent},
 {path:'user',component:UserhomeComponent},
+
 {
   path: 'NewsFeed',
-  component: BeatShareUsersComponent
+  component: UsersComponent
 },
 {
   path: 'details/:id',

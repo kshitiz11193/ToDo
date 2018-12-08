@@ -1,0 +1,38 @@
+<!-- 
+
+<ul>
+  <li *ngFor="let user of users$">
+     <img src= {{user.avatar}} height="42" width="42">
+  
+    <span>
+    <ul>
+        <li id = "title"> {{ user.name }} </li>
+      <li><span> {{ user.position }} </span>at <span> {{ user.company }} </span></li> 
+      <li id="skill">{{ user.skill }}</li>
+
+      
+    </ul>
+
+  </span>
+
+  
+  </li>
+</ul> -->
+
+<h1>Users</h1>
+<div id="container">
+ 
+  
+  <div id="content">
+<ul>
+  <li *ngFor="let usr of beatUserService.beatUser">
+    <a *ngIf ="usr.username" >{{ usr.username }}</a><br>
+    <a *ngIf ="usr.username">  {{ usr.email }}</a>
+    
+    </li>
+    </ul>
+  
+    
+    </div>
+    </div>
+  

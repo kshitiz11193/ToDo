@@ -1,0 +1,12 @@
+<div id="controls" ng-hide="loading">
+  <button id="play" class="button small success radius" (click)="play()">Play</button>
+  <button id="pause" class="button small alert radius" (click)="stop()">Stop</button>
+  <button id="reset" class="button small radius" (click)="reset()">Clear</button>
+  <div id="readout">
+    <span id="tempo">
+      <input [(ngModel)]="tempo" type="range" min="60" max="180" (ngModelChange)="setTempo(tempo)">
+      <input id="bpmEdit" type="text" min="60" max="180" (ngModelChange)="setTempo(tempo)" (blur)="CloseEdit()" [(ngModel)]="tempo" style="width:50px;display:none;">
+      <span id="bpm" ng-click="EditBPM()">{{tempo}} bpm</span>
+    </span>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {CookieService} from 'ngx-cookie-service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -25,7 +25,7 @@ import { MusicShareComponent } from './music-share/music-share.component';
     InstrumentComponent,
     RangePipe,
     MusicShareComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,7 @@ import { MusicShareComponent } from './music-share/music-share.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [UserService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -40,12 +40,25 @@ export class UserService {
       headers:new HttpHeaders().append('Content-Type','application/json')
     })
   }
-  addToPlayList(array:any)
+  addToPlayList(array:any, username)
  {
-   debugger
-   return this._http.post('http://127.0.0.1:3000/users/addToPlyList',array,{
-     observe:'body',
-     headers:new HttpHeaders().append('Content-Type','application/json')
-   });
+  //  debugger
+  console.log("array in userservice"+username);
+
+  return fetch ("http://127.0.0.1:3000/users/addToPlayList/" + username, {
+    method: "POST",
+    body: JSON.stringify(array),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
  }
 }
+
+
+
+  //  return this._http.post('http://127.0.0.1:3000/users/addToPlayList', array,{
+  //    observe:'body',
+
+  //   //  headers:new HttpHeaders().append('Content-Type','application/json')
+  //  });

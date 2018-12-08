@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-userhome',
@@ -9,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class UserhomeComponent implements OnInit {
   username:String='';
-  constructor(private _user:UserService, private _router:Router) { 
+  constructor(private _user:UserService, private _router:Router, private cookie: CookieService) {
     this._user.user()
     .subscribe(
       data=>this.addName(data),
@@ -18,8 +20,10 @@ export class UserhomeComponent implements OnInit {
   }
   addName(data) {
     this.username = data.username;
+    console.log("inside addName"+data.username+"");
   }
   ngOnInit() {
+    console.log("cookie email" + this.cookie.get('email'))
   }
   logout() {
     this._user.logout()

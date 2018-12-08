@@ -92,6 +92,7 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
 
 if(this.instrument$!=undefined)
 {
+  this._rows=[];
   //console.log("LI"+this.instrument$.instruments);
       for(let i = 0; i < 4; i++) {
         item = this.instrument$.instruments[i].file;

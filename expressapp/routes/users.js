@@ -60,10 +60,10 @@ router.post('/login',function(req,res,next){
   })(req, res, next);
 });
 
-router.post('/addToPlayList/:username', function (req, res, next) {
+router.post('/addToPlayList/:email', function (req, res, next) {
   console.log("AT route add ti play list")
 
-  console.log(req.params.username)
+  console.log(req.params.email)
   // var u = User.find({
   //   username: req.body.username
   // })
@@ -71,7 +71,7 @@ router.post('/addToPlayList/:username', function (req, res, next) {
 
   // console.log(u);
 
-  User.findOneAndUpdate({
+  User.update({
     email: req.params.email
   }, {
     $push: {

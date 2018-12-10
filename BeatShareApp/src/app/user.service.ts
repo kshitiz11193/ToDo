@@ -40,12 +40,12 @@ export class UserService {
       headers:new HttpHeaders().append('Content-Type','application/json')
     })
   }
-  addToPlayList(array:any, username)
+  addToPlayList(array:any, email)
  {
   //  debugger
-  console.log("array in userservice"+username);
+  console.log("array in userservice"+email);
 
-  return fetch ("http://127.0.0.1:3000/users/addToPlayList/" + username, {
+  return fetch ("http://127.0.0.1:3000/users/addToPlayList/" + email, {
     method: "POST",
     body: JSON.stringify(array),
     headers: {

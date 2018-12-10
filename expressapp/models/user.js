@@ -5,11 +5,11 @@ var bcrypt = require('bcrypt');
 
 //create the schema for mongo DB, each object will have following 4 properties in the DB
 var schema = new Schema({
-    email : {type:String, require:true},
+    email : {type:String, require:true, unique: true},
     username: {type:String, require:true},
     password:{type:String, require:true},
     creation_dt:{type:Date, require:true},
-    row: {type:[Object], require:false}
+    row: {type:[[]], require:false}
 });
 
 schema.statics.hashPassword = function hashPassword(password){

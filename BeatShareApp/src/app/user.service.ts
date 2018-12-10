@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private _http:HttpClient) { }
 
-//rest api call 
+//rest api call
   register(body:any){
     return this._http.post('http://127.0.0.1:3000/users/register',body,{
       observe:'body',
@@ -48,4 +48,25 @@ export class UserService {
       headers:new HttpHeaders().append('Content-Type','application/json')
     })
   }
+  addToPlayList(array:any, email)
+ {
+  //  debugger
+  console.log("array in userservice"+email);
+
+  return fetch ("http://127.0.0.1:3000/users/addToPlayList/" + email, {
+    method: "POST",
+    body: JSON.stringify(array),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+ }
 }
+
+
+
+  //  return this._http.post('http://127.0.0.1:3000/users/addToPlayList', array,{
+  //    observe:'body',
+
+  //   //  headers:new HttpHeaders().append('Content-Type','application/json')
+  //  });

@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -9,7 +10,8 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _router:Router,private  _user:UserService) { }
+  email: string = '';
+  constructor(private _router:Router,private  _user:UserService, private cookie: CookieService) { }
   loginForm : FormGroup=new FormGroup({
     email:new FormControl(null,[Validators.email,Validators.required]),
     password:new FormControl(null, Validators.required)
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
   moveToRegister(){
     this._router.navigate(['/register']);
   }
-  
+
 //subscribing to the data obtained from the login method of user.service.ts file (rest api)
   login(){
     if(!this.loginForm.valid){
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit {
     // console.log(JSON.stringify(this.loginForm.value));
     this._user.login(JSON.stringify(this.loginForm.value))
     .subscribe(
-      data=>{console.log(data);this._router.navigate(['/user']);} ,
+      data=>{console.log(data);this._router.navigate(['/user']); this.cookie.set("email", this.email)} ,
       error=>console.error(error)
     )
   }

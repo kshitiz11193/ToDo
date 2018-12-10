@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../models/user');
 var passport = require('passport');
 var ObjectId = require('mongoose').Types.ObjectId;
+// var Tune = require('../models/tune');
 /* GET users listing. */
 
 
@@ -55,9 +56,10 @@ async function addToDB(req, res) {
     email: req.body.email,
     username: req.body.username,
     password: User.hashPassword(req.body.password),
-    creation_dt: Date.now()
+    creation_dt: Date.now(),
   });
- 
+
+
 //await function to give the feel it is a synchronous call where as internally it is an asynchronous call.
   try {
     doc = await user.save();  //saves the user to mongoDB
@@ -67,6 +69,22 @@ async function addToDB(req, res) {
     return res.status(501).json(err);
   }
 }
+
+// async function saveTune(req,res) {
+//   console.log(req.body.row);
+
+//   var tune = new Tune({
+//     row: req.body.row
+//   })
+//   try {
+//     doc = await tune.save();  //saves the user to mongoDB
+//     return res.status(201).json(doc);
+//   }
+//   catch (err) {
+//     return res.status(501).json(err);
+//   }
+// }
+
 router.post('/login',function(req,res,next){
   passport.authenticate('local', function(err, user, info) {
     if (err) { return res.status(501).json(err); }
@@ -78,6 +96,37 @@ router.post('/login',function(req,res,next){
     });
   })(req, res, next);
 });
+
+router.post('/addToPlayList/:email', function (req, res, next) {
+  console.log("AT route add ti play list")
+
+  console.log(req.params.email)
+  // var u = User.find({
+  //   username: req.body.username
+  // })
+  // res.status(200).json(u);
+
+  // console.log(u);
+
+  User.update({
+    email: req.params.email
+  }, {
+    $push: {
+      row: req.body
+    }
+  },{
+    upsert:true
+  }, function(err){
+    if(err){
+      console.log("Error has occured. Life sucks.");
+
+    }
+  });
+});
+
+// router.post('/addToPlayList', function (req,res){
+//   saveTune(req,res);
+// });
 
 router.get('/user',isValidUser,function(req,res,next){
   return res.status(200).json(req.user);

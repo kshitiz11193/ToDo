@@ -1,3 +1,5 @@
+import { CookieService } from 'ngx-cookie-service';
+import { UserService} from './../user.service';
 import { Component, OnInit, AfterViewChecked, OnChanges } from "@angular/core";
 import { GeneralService } from "../general.service";
 import { Observable } from "rxjs";
@@ -25,12 +27,14 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
   _delay = 100;
   _gridLength = 16;
   _tempo = 120;
+  saveSequence= [];
  //_timers = 0;
 
+ email: string = this.cookieService.get('email');
  _rows:Array<any>;
  _queue = timer_q();
   //variables ends here
-  constructor(private data: GeneralService,private rowData: BeatsService) {}
+  constructor(private data: GeneralService,private rowData: BeatsService, private userService: UserService, private cookieService: CookieService) {}
 
   ngOnInit() {
     this.data.getInstrument().subscribe(data => (this.instrument$ = data));
@@ -40,6 +44,7 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
     this.data.currentData.subscribe(_currentBeat => this._currentBeat = _currentBeat)
 
     this.data.dataRow.subscribe(_rows => this._rows = _rows);
+
     // this.loadInstruments();
     this.range();
 
@@ -59,8 +64,10 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
       this.loadInstruments();
 
       this.loadSequence();
+      this.save();
       //this.play();
       this.jData = true;
+
 
     }
 
@@ -94,9 +101,10 @@ if(this.instrument$!=undefined)
 {
   this._rows=[];
   //console.log("LI"+this.instrument$.instruments);
+      this._rows=[];
       for(let i = 0; i < 4; i++) {
         item = this.instrument$.instruments[i].file;
-        console.log("item:  "+item);
+        console.log("item:"+item);
         console.log('$$$inside instrument load');
 
          player = new Howl({ src: ['assets/audio/' + item] });
@@ -186,6 +194,42 @@ if(this.sequence$!=undefined)
   }
 
 
+  save()
+  {
+    let finalSequence = [];
+    for(let i = 0; i< this._rows.length ; i++)
+    {
+      let seq = "";
+      let array = [];
+
+
+      for(let j = 0; j< 16; j++)
+    {
+      console.log(this._rows[i].getBeats());
+      if(this._rows[i].getBeats()[j].isActive())
+      {
+
+        seq = seq + 1;
+        console.log("sequence-------------------------"+seq);
+      }
+
+      else{
+
+        seq = seq + 0;
+      }
+
+
+
+    }
+    array.push(seq);
+console.log("array-------------------------"+array);
+finalSequence.push(array);
+
+    }
+    console.log("final sequence-------------------------"+finalSequence);
+    //this.saveSequence = finalSequence;
+    return finalSequence;
+  }
   // Benchmark Code
   //var lastTime = new Date().getTime();
    playBeat = () => {
@@ -227,6 +271,16 @@ if(this.sequence$!=undefined)
    beatDelay() {
     return (1000 / (this._tempo * 2) * 60);
   }
+
+  addToPlayList()
+ {
+    this.saveSequence=this.save();
+   console.log("row inside playlist" +this.saveSequence);
+   debugger
+ this.userService.addToPlayList(this.saveSequence, this.cookieService.get('email')).then(
+  data=>{console.log("Hello world"+data);},
+  error=>console.error(error)
+ )}
 
 
 

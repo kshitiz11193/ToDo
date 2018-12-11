@@ -21,6 +21,7 @@ import { PostsComponent } from './posts/posts.component';
 import { DetailsComponent } from './details/details.component';
 import { BeatShareUsersComponent } from './beat-share-users/beat-share-users.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
     PostsComponent,
     DetailsComponent,
     ProfileComponent,
+    PlaylistComponent,
     
   
   ],

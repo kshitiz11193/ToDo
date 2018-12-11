@@ -1,0 +1,28 @@
+ul {
+    list-style-type: none;
+    margin:0;padding:0;
+
+    li {
+        background: #575757;
+        border-radius: 8px;
+        padding: 2px;
+        margin-bottom: 8px;
+        color: white;
+
+       
+
+        ul {
+            margin-top: 20px;
+            
+            li {
+                padding:0;
+
+                button {
+                    
+                    background: white;
+                }
+               
+            }
+        }
+    }
+}

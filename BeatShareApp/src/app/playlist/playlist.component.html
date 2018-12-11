@@ -1,0 +1,12 @@
+<h1>Playlist</h1>
+
+<ul>
+  <li *ngFor="let tunes of playlist$.tunes">
+   <!-- <a routerLink="/details/{{user.id}}">{{ user.name }}</a> -->
+
+    <ul>
+      <li><button (click) ="playBeat(tunes.sequence)">Play</button><button (click) ="stopIt()">Pause</button></li>
+       <li>{{ tunes.name }}</li> 
+    </ul>
+  </li>
+</ul>

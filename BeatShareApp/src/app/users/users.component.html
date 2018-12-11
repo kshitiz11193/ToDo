@@ -28,11 +28,12 @@
   <li *ngFor="let usr of beatUserService.beatUser">
     <a *ngIf ="usr.username" >{{ usr.username }}</a><br>
     <a *ngIf ="usr.username">  {{ usr.email }}</a>
-    
+    <button id="Music" class="button small success radius" (click)="retriveUserMuisc()">Msuic</button>
     </li>
     </ul>
   
     
     </div>
+    
     </div>
   

@@ -20,6 +20,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { PostsComponent } from './posts/posts.component';
 import { DetailsComponent } from './details/details.component';
 import { BeatShareUsersComponent } from './beat-share-users/beat-share-users.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { BeatShareUsersComponent } from './beat-share-users/beat-share-users.com
     UsersComponent,
     PostsComponent,
     DetailsComponent,
+    ProfileComponent,
     
   
   ],

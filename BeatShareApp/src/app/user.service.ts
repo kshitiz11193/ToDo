@@ -61,12 +61,31 @@ export class UserService {
     }
   })
  }
+
+ retriveUserMusic(email)
+ {
+  console.log(" in retriveUserMusic"+email);
+  return fetch ("http://127.0.0.1:3000/users/retriveUserMusic/" + email, {
+    method: "GET",
+    
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+ 
+}
+editUser(updatedUsername:String,email)
+{
+  console.log(" in edit user"+email);
+  console.log("###"+updatedUsername);
+  
+  return fetch ("http://127.0.0.1:3000/users/Profile/editUser/" +email, {
+    method: "GET",
+    body: JSON.stringify(updatedUsername),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+}
 }
 
-
-
-  //  return this._http.post('http://127.0.0.1:3000/users/addToPlayList', array,{
-  //    observe:'body',
-
-  //   //  headers:new HttpHeaders().append('Content-Type','application/json')
-  //  });

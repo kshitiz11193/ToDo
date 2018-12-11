@@ -124,6 +124,48 @@ router.post('/addToPlayList/:email', function (req, res, next) {
   });
 });
 
+router.get('/retriveUserMusic/:email', function (req, res, next) {
+  console.log("AT route retrive music")
+
+  console.log(req.params.email)
+  User.find({},(err,docs) => {
+    if (!err) { res.send(docs); console.log(docs.row);
+    console.log("reached here");}
+    if(err)
+    {
+      console.log(err);
+    }
+    });
+});
+
+router.get('/Profile/editUser/:email',function (req, res, next) {
+  console.log("AT route edit user")
+
+  console.log(req.params.email)
+  console.log(req.body)
+  User.update({
+    email: req.params.email
+  }, {
+    $set: {
+      username: req.body,
+      
+    }
+  },{
+    upsert:true,
+   
+  }, function(err){
+    if(err){
+      console.log("error.");
+
+    }
+  });
+  
+});
+
+
+
+
+
 // router.post('/addToPlayList', function (req,res){
 //   saveTune(req,res);
 // });

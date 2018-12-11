@@ -10,6 +10,7 @@ import { UsersComponent } from './users/users.component';
 import { DetailsComponent } from './details/details.component';
 import { PostsComponent } from './posts/posts.component';
 import  { BeatShareUsersComponent } from './beat-share-users/beat-share-users.component';
+import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   {path:'', redirectTo:'login',pathMatch:'full'},
 {path:'login',component:LoginComponent},
@@ -28,6 +29,10 @@ const routes: Routes = [
   path: 'NewsFeed/posts',
   component: PostsComponent
 },
+{
+  path:'Profile',
+  component:ProfileComponent
+}
 //{ path:'playBeat', component:MusicShareComponent }
 
 

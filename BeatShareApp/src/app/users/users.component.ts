@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
-import { UserService } from '../user.service';
+
+import { UserService} from './../user.service';
 import { BeatShareUsersService } from '../shared/beat-share-users.service';
 import { BeatShareUsers } from '../shared/beat-share-users.model';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
   providers: [BeatShareUsersService]
 })
+
 export class UsersComponent implements OnInit {
   users$: Object;
-  constructor(private data: DataService, private userService:UserService,private beatUserService: BeatShareUsersService) { }
+  row =[];
+  constructor(private data: DataService, private userService:UserService,private beatUserService: BeatShareUsersService,private cookieService: CookieService) { }
 
   ngOnInit() {
     this.data.getUsers().subscribe(
@@ -37,7 +41,13 @@ export class UsersComponent implements OnInit {
       });
     }
   }
-  
+  retriveUserMuisc()
+  {
+    this.userService.retriveUserMusic( this.cookieService.get('email')).then(
+      data=>{console.log("Hello world"+data);},
+      error=>console.error(error)
+     )
+  }
   
 
 }

@@ -8,6 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
 
+  obj:any;
+
   constructor(private _http:HttpClient) { }
 
 //rest api call
@@ -50,7 +52,9 @@ export class UserService {
   }
   addToPlayList(array:any, email)
  {
-  //  debugger
+   
+  
+   alert(JSON.stringify(array));
   console.log("array in userservice"+email);
 
   return fetch ("http://127.0.0.1:3000/users/addToPlayList/" + email, {

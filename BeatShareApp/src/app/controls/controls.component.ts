@@ -140,16 +140,23 @@ if(this.sequence$!=undefined)
 
   save()
   {
-    let finalSequence = [];
+    debugger
+    //let finalSequence = [];
+    
+      let array = [];
+      var viewData = { 
+        name:"money", sequence:[]
+       };
+       let count = 0;
     for(let i = 0; i< this._rows.length ; i++)
     {
+      
       let seq = "";
-      let array = [];
-
-
+      
       for(let j = 0; j< 16; j++)
     {
       console.log(this._rows[i].getBeats());
+      
       if(this._rows[i].getBeats()[j].isActive())
       {
 
@@ -165,14 +172,18 @@ if(this.sequence$!=undefined)
 
 
     }
+    debugger
+    viewData.sequence[count]=seq;
+    count++;
     array.push(seq);
 console.log("array-------------------------"+array);
-finalSequence.push(array);
+//finalSequence.push(array);
 
     }
-    console.log("final sequence-------------------------"+finalSequence);
+    console.log("final sequence-------------------------"+array);
     //this.saveSequence = finalSequence;
-    return finalSequence;
+    alert(JSON.stringify(viewData));
+    return viewData;
   }
 
 
@@ -181,10 +192,10 @@ finalSequence.push(array);
 
   addToPlayList()
  {
-    this.saveSequence=this.save();
+    //this.saveSequence=this.save();
    console.log("row inside playlist" +this.saveSequence);
    debugger
- this.userService.addToPlayList(this.saveSequence, this.cookieService.get('email')).then(
+ this.userService.addToPlayList(this.save(), this.cookieService.get('email')).then(
   data=>{console.log("Hello world"+data);},
   error=>console.error(error)
  )}

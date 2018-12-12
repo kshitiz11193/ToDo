@@ -9,8 +9,8 @@
       <span id="bpm" ng-click="EditBPM()">{{_tempo}} bpm</span>
     </span>
   </div>
-  <button id="save" class="button small success radius" (click)="addToPlayList()">Save</button> 
-  Name: <input id="inputText" >
+  <button id="save" class="button small success radius" (click)="addToPlayList()">Save</button>
+  Name: <input id="inputText" [(ngModel)]="tuneName">
 
 </div>
 
@@ -26,7 +26,7 @@
       </li>
     </ul>
   </li>
- 
+
 
 
 

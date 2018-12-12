@@ -1,3 +1,4 @@
+import { Howl } from 'howler';
 import { Injectable } from '@angular/core';
 import { GeneralService } from "./general.service";
 import {BeatsService} from "./beats.service"
@@ -34,7 +35,7 @@ export class PlaySequenceService implements OnInit{
       "file" : "KHats Open-04.mp3" }
   ]
 
-  constructor(private data: GeneralService,private rowData: BeatsService) { 
+  constructor(private data: GeneralService,private rowData: BeatsService) {
     this.queue = this.rowData.timer_q();
   }
 
@@ -52,10 +53,10 @@ export class PlaySequenceService implements OnInit{
     debugger
     this.queue = this.rowData.timer_q();
     alert(this.queue);
-    
+
   }
 
- 
+
 
 
   playList(tone:Array<any>)
@@ -71,39 +72,39 @@ export class PlaySequenceService implements OnInit{
   loadInstruments() {
     let item, player, instrument;
 
-   
-    
+
+
       this.rows$ = [];
   //console.log("LI"+this.instrument$.instruments);
       for(let i = 0; i < 4; i++) {
         item = this.instruments[i].file;
         console.log("item:  "+item);
         console.log('$$$inside instrument load');
-       
+
          player = new Howl({ src: ['assets/audio/' + item] });
          //player.play();
         instrument =  this.rowData.Instrument(player, this.instruments[i]);
         //instrument.play();
         this.rows$.push( this.rowData.Row(instrument, this.gridLength));
         console.log("rows value"+this.rows$);
-        
-        
+
+
       }
       this.data.getRows(this.rows$);
-      
+
      // this.loadSequence();
-  
-   
+
+
   }
 
    loadSequence(tone) {
-   
+
 
    //this.reset();
 
       console.log("inside load sequence"+this.sequence$);
       this.gridLength = this.gridLength;
-      
+
       this.setTempo(this.tempo);
 
       for(var i = 0; i < 4; i++) {
@@ -111,13 +112,13 @@ export class PlaySequenceService implements OnInit{
           if (tone[i][j] === "1") {
             this.rows$[i].getBeats()[j].activate();
             console.log("row value inside load"+ this.rows$[i].getBeats()[j]);
-            
+
           } else {
             this.rows$[i].getBeats()[j].deactivate();
           }
         }
       }
-    
+
   }
 
   setTempo(newTempo) {
@@ -148,21 +149,21 @@ export class PlaySequenceService implements OnInit{
     this.resetAllRows();
   }
 
-  
+
   // Benchmark Code
   //var lastTime = new Date().getTime();
    playBeat = () => {
     var xyz = this;
-      
+
 
       return function() {
-       
-      
+
+
       if (xyz.currentBeat >= xyz.gridLength) {
         xyz.currentBeat = 0;
         console.log("current beat set to zero");
       }
-      
+
       for (var i = 0; i < xyz.rows$.length; i++) {
         xyz.rows$[i].playSound(xyz.currentBeat);
       }

@@ -1,5 +1,5 @@
 //import { AppGlobals } from './app.global';
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { BeatShareUsersService } from './shared/beat-share-users.service';
 import { BeatShareUsers } from './shared/beat-share-users.model';
 import { AppGlobals } from './app.global';
@@ -8,7 +8,7 @@ import { AppGlobals } from './app.global';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'frontend';
 
 
@@ -16,12 +16,12 @@ export class AppComponent {
 
   }
 
-  // ngAfterViewInit() {
+  ngAfterViewInit() {
   //   //console.log(localStorage.get('userid'));
   //   if(localStorage.get('userid')){
   //     this.flag = false;
   //   }
-  // }
+  }
 
 
 

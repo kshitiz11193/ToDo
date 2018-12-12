@@ -9,7 +9,7 @@ var schema = new Schema({
     username: {type:String, require:true},
     password:{type:String, require:true},
     creation_dt:{type:Date, require:true},
-    row: {type:[[]], require:false}
+    row: {type:[], require:false}
 });
 
 schema.statics.hashPassword = function hashPassword(password){

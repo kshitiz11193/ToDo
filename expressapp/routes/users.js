@@ -33,7 +33,7 @@ router.put('/users:id', (req, res) => {
   var usr = {
       name: req.body.username,
       email: req.body.email,
-     
+
   };
   User.findByIdAndUpdate(req.params.id, { $set: usr }, { new: true }, (err, doc) => {
       if (!err) { res.send(doc); }
@@ -148,18 +148,18 @@ router.get('/Profile/editUser/:email',function (req, res, next) {
   }, {
     $set: {
       username: req.body,
-      
+
     }
   },{
     upsert:true,
-   
+
   }, function(err){
     if(err){
       console.log("error.");
 
     }
   });
-  
+
 });
 
 

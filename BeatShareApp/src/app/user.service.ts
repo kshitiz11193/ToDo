@@ -52,8 +52,8 @@ export class UserService {
   }
   addToPlayList(array:any, email)
  {
-   
-  
+
+
    alert(JSON.stringify(array));
   console.log("array in userservice"+email);
 
@@ -66,23 +66,23 @@ export class UserService {
   })
  }
 
- retriveUserMusic(email)
+ retriveUserMusic(email: any)
  {
   console.log(" in retriveUserMusic"+email);
   return fetch ("http://127.0.0.1:3000/users/retriveUserMusic/" + email, {
     method: "GET",
-    
+    body: JSON.stringify(email),
     headers: {
       "Content-Type": "application/json"
     }
   })
- 
+
 }
 editUser(updatedUsername:String,email)
 {
   console.log(" in edit user"+email);
   console.log("###"+updatedUsername);
-  
+
   return fetch ("http://127.0.0.1:3000/users/Profile/editUser/" +email, {
     method: "GET",
     body: JSON.stringify(updatedUsername),

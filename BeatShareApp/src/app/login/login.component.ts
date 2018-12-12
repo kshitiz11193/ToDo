@@ -32,9 +32,10 @@ export class LoginComponent implements OnInit {
     // console.log(JSON.stringify(this.loginForm.value));
     this._user.login(JSON.stringify(this.loginForm.value))
     .subscribe(
-      data=>{console.log(data);this._router.navigate(['/user']); this.cookie.set("email", this.email);} ,
+      data=>{console.log(data);this._router.navigate(['/user']); this.cookie.set("email", this.email); this._global.flag = true;}  ,
       error=>console.error(error),
-     
+
+
     )
   }
 

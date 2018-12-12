@@ -22,6 +22,8 @@ import { DetailsComponent } from './details/details.component';
 import { BeatShareUsersComponent } from './beat-share-users/beat-share-users.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+//import {StorageServiceModule} from 'angular-webstorage-service';
+import {AppGlobals} from './app.global';
 
 
 @NgModule({
@@ -39,8 +41,9 @@ import { PlaylistComponent } from './playlist/playlist.component';
     DetailsComponent,
     ProfileComponent,
     PlaylistComponent,
-    
-  
+    BeatShareUsersComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -49,9 +52,10 @@ import { PlaylistComponent } from './playlist/playlist.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+  //  StorageServiceModule
    // MatRadioModule,
   ],
-  providers: [UserService, CookieService],
+  providers: [UserService, CookieService, AppGlobals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

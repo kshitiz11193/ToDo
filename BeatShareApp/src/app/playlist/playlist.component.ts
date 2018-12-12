@@ -10,9 +10,9 @@ export class PlaylistComponent implements OnInit {
     play:any;
   playlist$:any;
 
-  constructor(private data: GeneralService, private playSequence: PlaySequenceService) { 
-    
-    
+  constructor(private data: GeneralService, private playSequence: PlaySequenceService) {
+
+
   }
 
   ngOnInit() {
@@ -25,11 +25,12 @@ export class PlaylistComponent implements OnInit {
     this.playSequence.playList(row);
 
   }
-  
+
   stopIt()
   {
-
+    debugger
     this.playSequence.stop();
+    alert("hello");
   }
 
 }

@@ -30,7 +30,7 @@ export class PlaylistComponent implements OnInit {
   {
     debugger
     this.playSequence.stop();
-    alert("hello");
+    
   }
 
 }

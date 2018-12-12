@@ -4,6 +4,8 @@ import {BeatsService} from "../beats.service"
 import { Observable } from "rxjs";
 import { Howl } from 'howler';
 import { RangePipe } from "../pipes/range.pipe";
+import {UserService} from "../user.service";
+import { CookieService } from 'ngx-cookie-service';
 //import { Instrument} from "../instrument";
 //import {Row} from "../row";
 
@@ -30,8 +32,10 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
   
  _rows:Array<any>;
  _queue :any;
+ saveSequence =[];
   //variables ends here
-  constructor(private data: GeneralService,private rowData: BeatsService) {}
+  constructor(private data: GeneralService,private rowData: BeatsService, private userService: UserService, private cookieService: CookieService) {}
+
 
   ngOnInit() {
     this.data.getInstrument().subscribe(data => (this.instrument$ = data));
@@ -42,7 +46,7 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
 
     this.data.dataRow.subscribe(_rows => this._rows = _rows);
     // this.loadInstruments();
-    //this.range();
+    this.range();
     this._queue = this.rowData.timer_q();
     
     
@@ -68,14 +72,14 @@ export class ControlsComponent implements OnInit,AfterViewChecked, OnChanges {
     
   }
 
-  // range()
-  // {
-  //   console.log(typeof(this.input));
-  //   for (let i=1; i<=16; i++)
-  //   {
-  //       this.input.push(i);
-  //   }
-  // }
+  range()
+  {
+    console.log(typeof(this.input));
+    for (let i=1; i<=16; i++)
+    {
+        this.input.push(i);
+    }
+  }
 
    loadInstruments() {
     let item, player, instrument;
@@ -134,6 +138,56 @@ if(this.sequence$!=undefined)
     }
   }
 
+  save()
+  {
+    let finalSequence = [];
+    for(let i = 0; i< this._rows.length ; i++)
+    {
+      let seq = "";
+      let array = [];
+
+
+      for(let j = 0; j< 16; j++)
+    {
+      console.log(this._rows[i].getBeats());
+      if(this._rows[i].getBeats()[j].isActive())
+      {
+
+        seq = seq + 1;
+        console.log("sequence-------------------------"+seq);
+      }
+
+      else{
+
+        seq = seq + 0;
+      }
+
+
+
+    }
+    array.push(seq);
+console.log("array-------------------------"+array);
+finalSequence.push(array);
+
+    }
+    console.log("final sequence-------------------------"+finalSequence);
+    //this.saveSequence = finalSequence;
+    return finalSequence;
+  }
+
+
+
+
+
+  addToPlayList()
+ {
+    this.saveSequence=this.save();
+   console.log("row inside playlist" +this.saveSequence);
+   debugger
+ this.userService.addToPlayList(this.saveSequence, this.cookieService.get('email')).then(
+  data=>{console.log("Hello world"+data);},
+  error=>console.error(error)
+ )}
   //  rows() {
   //   return this._rows;
   // }

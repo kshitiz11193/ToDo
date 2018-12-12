@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     .subscribe(
       data=>{console.log(data);this._router.navigate(['/user']); this.cookie.set("email", this.email);} ,
       error=>console.error(error),
-      this._global.flag=true;
+     
     )
   }
 

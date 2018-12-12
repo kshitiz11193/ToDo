@@ -1,13 +1,24 @@
+.head-font
+{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Comic Sans MS"
+    
+}
+
 ul {
     list-style-type: none;
     margin:0;padding:0;
 
     li {
-        background: #575757;
+        background: white;
         border-radius: 8px;
         padding: 2px;
         margin-bottom: 8px;
-        color: white;
+        color: black;
+        
 
        
 
@@ -16,7 +27,8 @@ ul {
             
             li {
                 padding:0;
-
+                
+                font-family: "Comic Sans MS";
                 button {
                     
                     background: white;

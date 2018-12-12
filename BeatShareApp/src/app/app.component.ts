@@ -8,7 +8,7 @@ import { AppGlobals } from './app.global';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   title = 'frontend';
 
 

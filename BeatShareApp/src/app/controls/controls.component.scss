@@ -22,6 +22,29 @@ button {
     border-color: #167999;
 }
 
+#controls #play {
+ background-color: #43ac6a;
+border-color: #368a55;
+color: #fff;
+font-family: "Comic Sans MS"
+}
+
+#controls #pause {
+  background-color: #f04124;
+  border-color: #cf2a0e;
+  color: #fff;
+  font-family: "Comic Sans MS"
+}
+
+#controls #save {
+  background-color: #F06C30;
+  border-color:#F06C30;
+  color: #fff;
+  font-family: "Comic Sans MS"
+}
+
+
+
 #controls #readout {
     display: inline-block;
     width: 200px;

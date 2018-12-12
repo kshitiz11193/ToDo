@@ -1,0 +1,15 @@
+<div class="head-font">Playlist:</div>
+
+<ul>
+  <li *ngFor="let tunes of playlist$.tunes">
+   <!-- <a routerLink="/details/{{user.id}}">{{ user.name }}</a> -->
+
+    <ul>
+      <li><i (click) ="playBeat(tunes.sequence)"  class="material-icons" style="font-size:30px;color:#ED4B2F">play_circle_outline</i> 
+        
+        <i (click) ="stopIt()"  class="material-icons" style="font-size:30px;color:#ED4B2F">pause_circle_outline</i></li>
+       
+        <li>{{ tunes.name }}</li>
+    </ul>
+  </li>
+</ul>

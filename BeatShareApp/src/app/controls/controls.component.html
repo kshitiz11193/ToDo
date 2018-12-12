@@ -1,0 +1,34 @@
+<div id="controls" ng-hide="loading">
+  <button id="play" class="button small success radius" (click)="play()">Play</button>
+  <button id="pause" class="button small alert radius" (click)="stop()">Stop</button>
+  <button id="reset" class="button small radius" (click)="reset()">Clear</button>
+  <div id="readout">
+    <span id="tempo">
+      <input [(ngModel)]="_tempo" type="range" min="60" max="180" (ngModelChange)="setTempo(_tempo)">
+      <input id="bpmEdit" type="text" min="60" max="180" (ngModelChange)="setTempo(_tempo)" (blur)="CloseEdit()" [(ngModel)]="_tempo" style="width:50px;display:none;">
+      <span id="bpm" ng-click="EditBPM()">{{_tempo}} bpm</span>
+    </span>
+  </div>
+  <button id="save" class="button small success radius" (click)="addToPlayList()">Save</button>
+  Name: <input id="inputText" [(ngModel)]="tuneName">
+
+</div>
+
+<ul id="dm-grid" ng-hide="loading">
+  <li class="dm-header">
+    <ul>
+      <li class='instrument-name'></li>
+      <li class='beat-num' *ngFor="let item of input; let i = index ">
+
+        <!-- {{ grid }} -->
+        <div [ngClass]="{true: 'current-beat'}[(i + 1) === _currentBeat]">{{i + 1}}</div>
+
+      </li>
+    </ul>
+  </li>
+
+
+
+
+
+</ul>

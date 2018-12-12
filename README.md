@@ -17,4 +17,39 @@
 <li>As a user I can save as many beats I want to the database by clicking on save button</li>
 </ol>    
 
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+
+```
+git clone https://github.com/neu-mis-info6150-fall-2018/final-project-ignore.git
+```
+
+#### open the file in any text editor and /or run the terminal command
+Open terminal inside Beatshare app folder
+```
+npm install
+
+```
+
+To display frontend on browser
+```
+ng serve --o
+
+```
+Open terminal inside expressapp folder
+```
+npm install
+
+```
+
+#### to start the server
+Open terminal inside expressapp folder
+```
+npm start
+
+```
+
+
 ![alt text](https://github.com/neu-mis-info6150-fall-2018/final-project-ignore/blob/master/BeatShare.svg)
